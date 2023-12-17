@@ -20,17 +20,17 @@ public class AppTests {
     private ApplicationContext context;
 
     @Test
-    @DisplayName("Test that Parrot instance named parrot1 has the name Koko")
+    @DisplayName("Test that Parrot instance named koko has the name Koko")
     public void testKokoIsInTheSpringContext() {
-        Parrot p = context.getBean("parrot1", Parrot.class);
+        Parrot p = context.getBean("koko", Parrot.class);
 
         assertEquals("Koko", p.getName());
     }
 
     @Test
-    @DisplayName("Test that Parrot instance named parrot2 has the name Miki")
+    @DisplayName("Test that Parrot instance named miki has the name Miki")
     public void testMikiIsInTheSpringContext() {
-        Parrot p = context.getBean("parrot2", Parrot.class);
+        Parrot p = context.getBean("miki", Parrot.class);
 
         assertEquals("Miki", p.getName());
     }
@@ -41,5 +41,13 @@ public class AppTests {
         Parrot p = context.getBean("parrot3", Parrot.class);
 
         assertEquals("Riki", p.getName());
+    }
+
+    @Test
+    @DisplayName("Test that Parrot instance named kiki has the name Kiki")
+    public void testKikiInTheSpringContext() {
+        Parrot p = context.getBean("kiki", Parrot.class);
+
+        assertEquals("Kiki", p.getName());
     }
 }
