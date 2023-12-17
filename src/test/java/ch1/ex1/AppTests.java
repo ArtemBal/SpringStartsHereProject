@@ -20,30 +20,26 @@ public class AppTests {
     private ApplicationContext context;
 
     @Test
-    @DisplayName("Test that a Parrot instance " +
-            "with the attribute name having the value Koko " +
-            "has been added to the Spring context.")
+    @DisplayName("Test that Parrot instance named parrot1 has the name Koko")
     public void testKokoIsInTheSpringContext() {
-        Parrot p = context.getBean(Parrot.class);
+        Parrot p = context.getBean("parrot1", Parrot.class);
 
         assertEquals("Koko", p.getName());
     }
 
     @Test
-    @DisplayName("Test that the String 'hello' " +
-            "has been added to the Spring context.")
-    public void testHelloIsInTheSpringContext() {
-        String s = context.getBean(String.class);
+    @DisplayName("Test that Parrot instance named parrot2 has the name Miki")
+    public void testMikiIsInTheSpringContext() {
+        Parrot p = context.getBean("parrot2", Parrot.class);
 
-        assertEquals("Hello", s);
+        assertEquals("Miki", p.getName());
     }
 
     @Test
-    @DisplayName("Test that the Integer 10 " +
-            "has been added to the Spring context.")
-    public void test10IsInTheSpringContext() {
-        Integer i = context.getBean(Integer.class);
+    @DisplayName("Test that Parrot instance named parrot3 has the name Riki")
+    public void testRikiIsInTheSpringContext() {
+        Parrot p = context.getBean("parrot3", Parrot.class);
 
-        assertEquals(10, i);
+        assertEquals("Riki", p.getName());
     }
 }
