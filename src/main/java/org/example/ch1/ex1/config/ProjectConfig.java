@@ -3,11 +3,13 @@ package org.example.ch1.ex1.config;
 import org.example.ch1.ex1.Parrot;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class ProjectConfig {
 
     @Bean("koko")
+    @Primary
     Parrot parrot1() {
         var p = new Parrot();
         p.setName("Koko");

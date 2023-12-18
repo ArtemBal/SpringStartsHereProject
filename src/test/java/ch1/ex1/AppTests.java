@@ -20,6 +20,14 @@ public class AppTests {
     private ApplicationContext context;
 
     @Test
+    @DisplayName("Test that Parrot instance named koko returned as primary")
+    public void testKokoIsPrimary() {
+        Parrot p = context.getBean(Parrot.class);
+
+        assertEquals("Koko", p.getName());
+    }
+
+    @Test
     @DisplayName("Test that Parrot instance named koko has the name Koko")
     public void testKokoIsInTheSpringContext() {
         Parrot p = context.getBean("koko", Parrot.class);
