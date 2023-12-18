@@ -20,12 +20,12 @@ public class AppTests {
     private ApplicationContext context;
 
     @Test
-    @DisplayName("Test that new spring bean has name null")
-    public void beanNameIsNull() {
+    @DisplayName("Test that new spring bean has name Kiki")
+    public void beanNameIsKiki() {
         Parrot p = context.getBean(Parrot.class);
 
         assertNotNull(p);
-        assertNull(p.getName());
+        assertEquals("Kiki", p.getName());
     }
 
     @Test
