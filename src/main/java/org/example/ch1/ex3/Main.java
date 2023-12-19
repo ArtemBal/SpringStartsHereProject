@@ -15,9 +15,17 @@ public class Main {
 
         Supplier<Parrot> parrotSupplier = () -> p1;
 
-        context.registerBean("p1", Parrot.class, parrotSupplier);
+        context.registerBean("p1",
+                Parrot.class,
+                parrotSupplier,
+                bc -> bc.setPrimary(true),
+                bc -> bc.setDescription("Test of bean configuration"));
 
         Parrot p2 = context.getBean(Parrot.class);
         System.out.println(p2.getName());
+
+        String s = context.getBeanDefinition("p1").getDescription();
+        System.out.println(s);
+
     }
 }
