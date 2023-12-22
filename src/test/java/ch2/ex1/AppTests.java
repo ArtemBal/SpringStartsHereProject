@@ -11,8 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {ProjectConfig.class} )
@@ -39,10 +38,11 @@ public class AppTests {
 
     @Test
     @DisplayName("Test that the Person instance in the Spring context" +
-            "doesn't own the Parrot instance from the Spring context")
+            " own the Parrot instance from the Spring context")
     public void testEllaDoesNotOwnKoko() {
         Person p = context.getBean(Person.class);
 
-        assertNull(p.getParrot());
+        assertNotNull(p.getParrot());
+        assertEquals(p.getParrot(), context.getBean(Parrot.class));
     }
 }
