@@ -7,9 +7,12 @@ import org.springframework.stereotype.Component;
 public class Person {
 
     private String name = "Ella";
+    private final Parrot parrot;
 
-    @Autowired
-    private Parrot parrot;
+    // @Autowired         со Spring 4.3, если класс состоит только из одного конструктора, аннотацию @Autowired можно пропустить.
+    public Person(Parrot parrot) {
+        this.parrot = parrot;
+    }
 
     public String getName() {
         return name;
@@ -21,9 +24,5 @@ public class Person {
 
     public Parrot getParrot() {
         return parrot;
-    }
-
-    public void setParrot(Parrot parrot) {
-        this.parrot = parrot;
     }
 }
