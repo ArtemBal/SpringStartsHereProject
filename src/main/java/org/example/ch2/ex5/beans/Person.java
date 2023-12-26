@@ -1,5 +1,6 @@
 package org.example.ch2.ex5.beans;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -9,8 +10,8 @@ public class Person {
 
     private final Parrot parrot;
 
-    public Person(Parrot parrot2) {
-        this.parrot = parrot2;
+    public Person(@Qualifier("parrot2") Parrot parrot) {
+        this.parrot = parrot;
     }
 
     public String getName() {
