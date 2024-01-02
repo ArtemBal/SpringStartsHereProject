@@ -3,18 +3,17 @@ package org.example.ch3.ex1.services;
 import org.example.ch3.ex1.model.Comment;
 import org.example.ch3.ex1.proxies.CommentNotificationProxy;
 import org.example.ch3.ex1.repositories.CommentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CommentService {
 
-    private final CommentRepository commentRepository;
-    private final CommentNotificationProxy commentNotificationProxy;
+    @Autowired
+    private CommentRepository commentRepository;
 
-    public CommentService(CommentRepository commentRepository, CommentNotificationProxy commentNotificationProxy) {
-        this.commentRepository = commentRepository;
-        this.commentNotificationProxy = commentNotificationProxy;
-    }
+    @Autowired
+    private CommentNotificationProxy commentNotificationProxy;
 
     public void publishComment(Comment comment) {
         commentRepository.storeComment(comment);
