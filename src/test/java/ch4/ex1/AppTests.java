@@ -2,6 +2,7 @@ package ch4.ex1;
 
 import org.example.ch4.ex1.condig.ProjectConfig;
 import org.example.ch4.ex1.services.CommentService;
+import org.example.ch4.ex1.services.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,12 +21,12 @@ public class AppTests {
     private ApplicationContext context;
 
     @Test
-    @DisplayName("Every CommentService you request from the Spring context is same instance")
+    @DisplayName("Every CommentRepository Spring context uses is same instance")
     public void testCommentServiceIsSingleton() {
-        var cs1 = context.getBean("commentService", CommentService.class);
-        var cs2 = context.getBean("commentService", CommentService.class);
+        var cs1 = context.getBean(CommentService.class);
+        var cs2 = context.getBean(UserService.class);
 
-        assertEquals(cs1, cs2);
+        assertEquals(cs1.getCommentRepository(), cs2.getCommentRepository());
 
     }
 }
