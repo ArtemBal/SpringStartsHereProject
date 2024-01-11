@@ -1,6 +1,7 @@
 package ch4.ex2;
 
 import org.example.ch4.ex2.condig.ProjectConfig;
+import org.example.ch4.ex2.services.CommentService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -34,10 +35,18 @@ public class AppTests {
     }
 
     @Test
+    @DisplayName("Verify that CommentService is not created")
+    public void testCommentServiceIsNotCreated() {
+        ApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfig.class);
+        assertEquals("", outContent.toString());
+    }
+
+    @Test
     @DisplayName("Verify that CommentService created")
-    public void testCommentServiceIsSingleton() {
+    public void testCommentServiceIsCreated() {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfig.class);
+        var service = context.getBean(CommentService.class);
         assertEquals("CommentService instance created!\n", outContent.toString());
     }
 
