@@ -49,7 +49,8 @@ public class AppTests {
         commentService.publishComment(comment);
 
         verify(serviceLogger).info("Publishing comment:" + comment.getText());
-        verify(aspectLogger, atLeastOnce()).info("Method will execute");
-        verify(aspectLogger, atLeastOnce()).info("Method executed");
+        verify(aspectLogger, atLeastOnce()).info("Method publishComment with parameters " +
+                "[Comment{text='Test comment text', author='Test comment author'}] will execute");
+        verify(aspectLogger, atLeastOnce()).info("Method executed and returned SUCCESS");
     }
 }
