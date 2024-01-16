@@ -1,5 +1,6 @@
 package org.example.ch5.ex2.services;
 
+import org.example.ch5.ex2.aspects.LogAfterReturn;
 import org.example.ch5.ex2.aspects.ToLog;
 import org.example.ch5.ex2.models.Comment;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,10 @@ public class CommentService {
         logger.info("Deleting comment:" + comment.getText());
     }
 
-    public void editComment(Comment comment) {
+    @LogAfterReturn
+    public String editComment(Comment comment) {
         logger.info("Editing comment:" + comment.getText());
+        return comment.getText();
     }
 
     public void setLogger(Logger logger) {
