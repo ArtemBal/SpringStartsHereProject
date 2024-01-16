@@ -16,4 +16,8 @@ public class LoggingAfterReturningAspect {
     public void log(Object returnedVal) {
         logger.info("After returning advice: Processing the result - " + returnedVal);
     }
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
 }
